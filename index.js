@@ -16,7 +16,12 @@ require('./models/db')();
 
 const exp = express();
 
-exp.use(cors());
+exp.use(cors(
+    {
+        origin: "https://quickqr-image2qr.onrender.com",
+        methods: ["POST", "GET" , "PUT", "DELETE"]
+    }
+));
 exp.use(express.json());
 
 exp.post("/imageUpload" ,upload.single("image"),  ImageUploadController)
